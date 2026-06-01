@@ -1,10 +1,40 @@
-import { forwardRef } from "react";
+import { forwardRef, useState } from "react";
 import {
-  Box, Typography, Grid, TextField, Button,
+  Box, Typography, Grid, TextField, Button, Snackbar, Alert,
 } from "@mui/material";
+import emailjs from "@emailjs/browser";
 import FadeInSection from "./FadeInSection";
 
+const EMAILJS_SERVICE_ID = 'service_f7pbeal';
+const EMAILJS_TEMPLATE_ID = 'template_q5m20gj';
+const EMAILJS_PUBLIC_KEY = '2DR7Vbjt4KSiRoCOS';
+
 const ContactSection = forwardRef(function ContactSection(_, ref) {
+  const [form, setForm] = useState({ from_name: "", from_email: "", subject: "", message: "" });
+  const [loading, setLoading] = useState(false);
+  const [snackbar, setSnackbar] = useState({ open: false, severity: "success", message: "" });
+
+  const handleChange = (e) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = () => {
+    if (!form.from_name || !form.from_email || !form.message) {
+      setSnackbar({ open: true, severity: "warning", message: "Please fill in all required fields." });
+      return;
+    }
+    setLoading(true);
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form, EMAILJS_PUBLIC_KEY)
+      .then(() => {
+        setSnackbar({ open: true, severity: "success", message: "Message sent! We'll get back to you soon." });
+        setForm({ from_name: "", from_email: "", subject: "", message: "" });
+      })
+      .catch(() => {
+        setSnackbar({ open: true, severity: "error", message: "Something went wrong. Please try again." });
+      })
+      .finally(() => setLoading(false));
+  };
+
   return (
     <Box
       ref={ref}
@@ -52,7 +82,7 @@ const ContactSection = forwardRef(function ContactSection(_, ref) {
                   </Box>
                   <Box>
                     <Typography sx={{ fontWeight: 600, color: "#0d1117", mb: 0.25 }}>Email Us</Typography>
-                    <Typography sx={{ color: "#185FA5", fontSize: 15 }}>hello@neurogrip.in</Typography>
+                    <Typography sx={{ color: "#185FA5", fontSize: 15 }}>mcneurogrip@gmail.com</Typography>
                   </Box>
                 </Box>
 
@@ -97,16 +127,19 @@ const ContactSection = forwardRef(function ContactSection(_, ref) {
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                   <Grid container spacing={1.5}>
                     <Grid item xs={12} sm={6}>
-                      <TextField fullWidth label="Name" placeholder="Your name" size="small" />
+                      <TextField fullWidth label="Name" name="from_name" value={form.from_name} onChange={handleChange} placeholder="Your name" size="small" />
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                      <TextField fullWidth label="Email" type="email" placeholder="you@example.com" size="small" />
+                      <TextField fullWidth label="Email" name="from_email" value={form.from_email} onChange={handleChange} type="email" placeholder="you@example.com" size="small" />
                     </Grid>
                   </Grid>
-                  <TextField fullWidth label="Subject" placeholder="How can we help?" size="small" />
+                  <TextField fullWidth label="Subject" name="subject" value={form.subject} onChange={handleChange} placeholder="How can we help?" size="small" />
                   <TextField
                     fullWidth
                     label="Message"
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
                     placeholder="Tell us more..."
                     multiline
                     rows={4}
@@ -115,13 +148,15 @@ const ContactSection = forwardRef(function ContactSection(_, ref) {
                   <Button
                     variant="contained"
                     fullWidth
+                    onClick={handleSubmit}
+                    disabled={loading}
                     sx={{
                       background: "#0d1117",
                       "&:hover": { background: "#1B3A6B" },
                       py: 1.75, fontSize: 15,
                     }}
                   >
-                    Send Message →
+                    {loading ? "Sending..." : "Send Message →"}
                   </Button>
                 </Box>
               </Box>
@@ -130,6 +165,17 @@ const ContactSection = forwardRef(function ContactSection(_, ref) {
 
         </Grid>
       </Box>
+
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={4000}
+        onClose={() => setSnackbar((s) => ({ ...s, open: false }))}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert severity={snackbar.severity} variant="filled" onClose={() => setSnackbar((s) => ({ ...s, open: false }))}>
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 });
