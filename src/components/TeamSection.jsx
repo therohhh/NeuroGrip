@@ -5,6 +5,7 @@ import {
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { TEAM } from "../constants/data";
+import FadeInSection from "./FadeInSection";
 
 export default function TeamSection() {
   const [teamIdx, setTeamIdx] = useState(0);
@@ -33,23 +34,26 @@ export default function TeamSection() {
       sx={{ py: { xs: 8, md: 12 }, px: "5vw", background: "#F8FAFF" }}
     >
       <Box sx={{ maxWidth: 700, mx: "auto", textAlign: "center" }}>
-        <Typography
-          sx={{ fontSize: 12, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", color: "#185FA5", mb: 1.5 }}
-        >
-          The Team
-        </Typography>
-        <Typography variant="h2" sx={{ fontSize: { xs: 28, md: 42 }, color: "#0d1117", mb: 1 }}>
-          Meet the Founders
-        </Typography>
-        <Box
-          sx={{
-            width: 48, height: 4,
-            background: "linear-gradient(90deg, #185FA5, #00C9A7)",
-            borderRadius: 2, my: 2, mx: "auto", mb: 5,
-          }}
-        />
+        <FadeInSection delay={0} duration={0.6}>
+          <Typography
+            sx={{ fontSize: 12, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", color: "#185FA5", mb: 1.5 }}
+          >
+            The Team
+          </Typography>
+          <Typography variant="h2" sx={{ fontSize: { xs: 28, md: 42 }, color: "#0d1117", mb: 1 }}>
+            Meet the Founders
+          </Typography>
+          <Box
+            sx={{
+              width: 48, height: 4,
+              background: "linear-gradient(90deg, #185FA5, #00C9A7)",
+              borderRadius: 2, my: 2, mx: "auto", mb: 5,
+            }}
+          />
+        </FadeInSection>
 
         {/* Card */}
+        <FadeInSection delay={0.2} duration={0.7}>
         <Box sx={{ position: "relative", minHeight: 280 }}>
           <Box
             sx={{
@@ -92,9 +96,11 @@ export default function TeamSection() {
             </Typography>
           </Box>
         </Box>
+        </FadeInSection>
 
         {/* Controls */}
-        <Box sx={{ display: "flex", gap: 1.5, justifyContent: "center", mt: 3, alignItems: "center" }}>
+        <FadeInSection delay={0.35} duration={0.6}>
+          <Box sx={{ display: "flex", gap: 1.5, justifyContent: "center", mt: 3, alignItems: "center" }}>
           <IconButton
             onClick={() => slideTeam("right")}
             sx={{ border: "1.5px solid #E8ECEF", "&:hover": { background: "#F0F4FF" } }}
@@ -120,6 +126,7 @@ export default function TeamSection() {
             <ArrowForwardIcon fontSize="small" />
           </IconButton>
         </Box>
+        </FadeInSection>
       </Box>
     </Box>
   );

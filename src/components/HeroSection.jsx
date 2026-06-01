@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
 import { Box, Typography, Button, Chip, Stack } from "@mui/material";
+import FadeInSection from "./FadeInSection";
 
 const TAGS = [
   { label: "🤖 Soft Robotics" },
@@ -33,80 +34,91 @@ const HeroSection = forwardRef(function HeroSection({ scrollTo }, ref) {
         {/* Left */}
         <Box sx={{ flex: 1 }}>
           {/* Badge */}
-          <Box
-            sx={{
-              display: "inline-flex", alignItems: "center", gap: 1,
-              background: "#F0F4FF", border: "1px solid #B5D4F4",
-              borderRadius: 100, px: 2, py: 0.75, mb: 3,
-            }}
-          >
-            <Box sx={{ width: 8, height: 8, borderRadius: "50%", background: "#185FA5" }} />
-            <Typography sx={{ fontSize: 13, fontWeight: 500, color: "#185FA5" }}>
-              AICTE Licensed Innovation
-            </Typography>
-          </Box>
-
-          <Typography
-            variant="h1"
-            sx={{
-              fontSize: { xs: 36, sm: 48, md: "clamp(36px, 5.5vw, 64px)" },
-              lineHeight: 1.1, color: "#0d1117", mb: 2.5,
-            }}
-          >
-            Restoring Grip.<br />
-            <span style={{ color: "#185FA5" }}>Restoring Life.</span>
-          </Typography>
-
-          <Typography
-            sx={{
-              fontSize: { xs: 16, md: 18 }, color: "#4A5568",
-              lineHeight: 1.7, mb: 4, maxWidth: 520,
-              mx: { xs: "auto", md: 0 },
-            }}
-          >
-            Neuro Grip is a soft robotic hand glove designed to assist and rehabilitate
-            patients with limited hand mobility — giving them back the independence they deserve.
-          </Typography>
-
-          {/* Chips */}
-          <Box sx={{ mb: 4, display: "flex", flexWrap: "wrap", gap: 1, justifyContent: { xs: "center", md: "flex-start" } }}>
-            {TAGS.map((t) => (
-              <Chip
-                key={t.label}
-                label={t.label}
-                size="small"
-                sx={{
-                  background: "#F0F4FF", color: "#185FA5",
-                  border: "1px solid #B5D4F4", fontWeight: 500,
-                  fontSize: 13, borderRadius: "100px",
-                }}
-              />
-            ))}
-          </Box>
-
-          <Stack direction={{ xs: "column", sm: "row" }} spacing={2} justifyContent={{ xs: "center", md: "flex-start" }}>
-            <Button
-              variant="contained"
-              onClick={() => scrollTo("About")}
-              sx={{ background: "#0d1117", "&:hover": { background: "#1B3A6B" }, px: 3.5, py: 1.5 }}
-            >
-              Learn More
-            </Button>
-            <Button
-              variant="outlined"
-              onClick={() => scrollTo("Contact")}
+          <FadeInSection delay={0} duration={0.6}>
+            <Box
               sx={{
-                color: "#0d1117", borderColor: "#0d1117", px: 3.5, py: 1.5,
-                "&:hover": { background: "#0d1117", color: "#fff" },
+                display: "inline-flex", alignItems: "center", gap: 1,
+                background: "#F0F4FF", border: "1px solid #B5D4F4",
+                borderRadius: 100, px: 2, py: 0.75, mb: 3,
               }}
             >
-              Get in Touch
-            </Button>
-          </Stack>
+              <Box sx={{ width: 8, height: 8, borderRadius: "50%", background: "#185FA5" }} />
+              <Typography sx={{ fontSize: 13, fontWeight: 500, color: "#185FA5" }}>
+                AICTE Licensed Innovation
+              </Typography>
+            </Box>
+          </FadeInSection>
+
+          <FadeInSection delay={0.15} duration={0.7}>
+            <Typography
+              variant="h1"
+              sx={{
+                fontSize: { xs: 36, sm: 48, md: "clamp(36px, 5.5vw, 64px)" },
+                lineHeight: 1.1, color: "#0d1117", mb: 2.5,
+              }}
+            >
+              Restoring Grip.<br />
+              <span style={{ color: "#185FA5" }}>Restoring Life.</span>
+            </Typography>
+          </FadeInSection>
+
+          <FadeInSection delay={0.3} duration={0.7}>
+            <Typography
+              sx={{
+                fontSize: { xs: 16, md: 18 }, color: "#4A5568",
+                lineHeight: 1.7, mb: 4, maxWidth: 520,
+                mx: { xs: "auto", md: 0 },
+              }}
+            >
+              Neuro Grip is a soft robotic hand glove designed to assist and rehabilitate
+              patients with limited hand mobility — giving them back the independence they deserve.
+            </Typography>
+          </FadeInSection>
+
+          {/* Chips */}
+          <FadeInSection delay={0.45} duration={0.7}>
+            <Box sx={{ mb: 4, display: "flex", flexWrap: "wrap", gap: 1, justifyContent: { xs: "center", md: "flex-start" } }}>
+              {TAGS.map((t) => (
+                <Chip
+                  key={t.label}
+                  label={t.label}
+                  size="small"
+                  sx={{
+                    background: "#F0F4FF", color: "#185FA5",
+                    border: "1px solid #B5D4F4", fontWeight: 500,
+                    fontSize: 13, borderRadius: "100px",
+                  }}
+                />
+              ))}
+            </Box>
+          </FadeInSection>
+
+          <FadeInSection delay={0.6} duration={0.7}>
+            <Stack direction={{ xs: "column", sm: "row" }} spacing={2} justifyContent={{ xs: "center", md: "flex-start" }}>
+              <Button
+                variant="contained"
+                onClick={() => scrollTo("About")}
+                sx={{ background: "#0d1117", "&:hover": { background: "#1B3A6B" }, px: 3.5, py: 1.5 }}
+              >
+                Learn More
+              </Button>
+              <Button
+                variant="outlined"
+                onClick={() => scrollTo("Contact")}
+                sx={{
+                  color: "#0d1117", borderColor: "#0d1117", px: 3.5, py: 1.5,
+                  "&:hover": { background: "#0d1117", color: "#fff" },
+                }}
+              >
+                Get in Touch
+              </Button>
+            </Stack>
+          </FadeInSection>
         </Box>
 
         {/* Right Visual */}
-        <Box
+        <FadeInSection delay={0.3} duration={0.9} direction="left">
+          <Box
           sx={{
             flex: "0 0 420px", width: { xs: "100%", md: 420 },
             height: { xs: 280, md: 420 }, position: "relative", mt: { xs: 4, md: 0 },
@@ -139,6 +151,7 @@ const HeroSection = forwardRef(function HeroSection({ scrollTo }, ref) {
             </Box>
           </Box>
         </Box>
+        </FadeInSection>
       </Box>
     </Box>
   );

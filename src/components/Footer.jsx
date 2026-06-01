@@ -1,5 +1,6 @@
 import { Box, Typography, Link, Stack, Divider } from "@mui/material";
 import { NAV_LINKS } from "../constants/data";
+import FadeInSection from "./FadeInSection";
 
 export default function Footer({ scrollTo }) {
   return (
@@ -8,6 +9,7 @@ export default function Footer({ scrollTo }) {
       sx={{ background: "#0d1117", color: "#fff", pt: 6, pb: 4, px: "5vw" }}
     >
       <Box sx={{ maxWidth: 1200, mx: "auto" }}>
+        <FadeInSection delay={0} duration={0.7}>
         <Box
           sx={{
             display: "flex",
@@ -88,9 +90,11 @@ export default function Footer({ scrollTo }) {
             </Box>
           </Box>
         </Box>
+        </FadeInSection>
 
         <Divider sx={{ borderColor: "rgba(255,255,255,0.1)", mb: 3 }} />
 
+        <FadeInSection delay={0.1} duration={0.6}>
         <Box
           sx={{
             display: "flex", justifyContent: "space-between",
@@ -104,6 +108,7 @@ export default function Footer({ scrollTo }) {
             AICTE Licensed · Made in India 🇮🇳
           </Typography>
         </Box>
+        </FadeInSection>
       </Box>
     </Box>
   );
