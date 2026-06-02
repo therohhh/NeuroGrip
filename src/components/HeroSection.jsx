@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import { Box, Typography, Button, Chip, Stack } from "@mui/material";
 import FadeInSection from "./FadeInSection";
-
+import heroImg from "../assets/hero.jpg";
 const TAGS = [
   { label: "🤖 Soft Robotics" },
   { label: "🏥 Medical Grade" },
@@ -119,38 +119,60 @@ const HeroSection = forwardRef(function HeroSection({ scrollTo }, ref) {
         {/* Right Visual */}
         <FadeInSection delay={0.3} duration={0.9} direction="left">
           <Box
-          sx={{
-            flex: "0 0 420px", width: { xs: "100%", md: 420 },
-            height: { xs: 280, md: 420 }, position: "relative", mt: { xs: 4, md: 0 },
-          }}
-        >
-          <Box
             sx={{
-              position: "absolute", inset: 0,
-              background: "linear-gradient(135deg, #E6F1FB 0%, #E1F5EE 100%)",
-              borderRadius: 6, display: "flex", alignItems: "center",
-              justifyContent: "center", overflow: "hidden",
+              flex: "0 0 auto",
+              width: { xs: "100%", md: 420 },
+              minHeight: { xs: 360, md: 420 },
+              position: "relative",
+              mt: { xs: 4, md: 0 },
             }}
           >
-            <Box sx={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center", width: "100%", height: "100%" }}>
-              <Box sx={{ position: "absolute", width: 280, height: 280, borderRadius: "50%", background: "rgba(24,95,165,0.08)", animation: "pulse 3s ease-in-out infinite" }} />
-              <Box sx={{ position: "absolute", width: 200, height: 200, borderRadius: "50%", background: "rgba(24,95,165,0.10)", animation: "pulse 3s ease-in-out infinite 0.5s" }} />
-              <Box sx={{ zIndex: 2, textAlign: "center" }}>
-                <Typography sx={{ fontSize: 80 }}>🦾</Typography>
-                <Typography sx={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: 18, color: "#185FA5", mt: 1.5 }}>
-                  Neuro Grip
-                </Typography>
-                <Typography sx={{ fontSize: 13, color: "#4A5568", mt: 0.5 }}>Soft Robotic Glove</Typography>
-              </Box>
-              <Box sx={{ position: "absolute", top: 32, right: 32, background: "#fff", borderRadius: 3, px: 2, py: 1.25, boxShadow: "0 4px 16px rgba(0,0,0,0.08)", fontSize: 13, fontWeight: 500, color: "#0F6E56" }}>
-                ✓ AICTE Certified
-              </Box>
-              <Box sx={{ position: "absolute", bottom: 32, left: 32, background: "#fff", borderRadius: 3, px: 2, py: 1.25, boxShadow: "0 4px 16px rgba(0,0,0,0.08)", fontSize: 13, fontWeight: 500, color: "#185FA5" }}>
-                🔬 Research Backed
+            <Box
+              sx={{
+                position: "absolute",
+                inset: 0,
+                background: "linear-gradient(135deg, #E6F1FB 0%, #E1F5EE 100%)",
+                borderRadius: 6,
+                overflow: "hidden",
+              }}
+            >
+              {heroImg ? (
+                <Box
+                  component="img"
+                  src={heroImg}
+                  alt="Neuro Grip soft robotic rehabilitation glove"
+                  loading="lazy"
+                  sx={{
+                    position: "absolute",
+                    inset: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: { xs: "contain", md: "cover" },
+                    objectPosition: "center",
+                  }}
+                />
+              ) : null}
+
+              <Box
+                sx={{
+                  position: "relative",
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {!heroImg && (
+                  <>
+                    <Box sx={{ position: "absolute", width: 280, height: 280, borderRadius: "50%", background: "rgba(24,95,165,0.08)", animation: "pulse 3s ease-in-out infinite" }} />
+                    <Box sx={{ position: "absolute", width: 200, height: 200, borderRadius: "50%", background: "rgba(24,95,165,0.10)", animation: "pulse 3s ease-in-out infinite 0.5s" }} />
+                  </>
+                )}
+
               </Box>
             </Box>
           </Box>
-        </Box>
         </FadeInSection>
       </Box>
     </Box>

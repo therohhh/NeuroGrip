@@ -5,9 +5,9 @@ import {
 import emailjs from "@emailjs/browser";
 import FadeInSection from "./FadeInSection";
 
-const EMAILJS_SERVICE_ID = 'service_f7pbeal';
-const EMAILJS_TEMPLATE_ID = 'template_q5m20gj';
-const EMAILJS_PUBLIC_KEY = '2DR7Vbjt4KSiRoCOS';
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const ContactSection = forwardRef(function ContactSection(_, ref) {
   const [form, setForm] = useState({ from_name: "", from_email: "", subject: "", message: "" });

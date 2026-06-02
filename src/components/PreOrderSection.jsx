@@ -76,25 +76,47 @@ const PreOrderSection = forwardRef(function PreOrderSection({ scrollTo }, ref) {
           </Button>
         </FadeInSection>
 
-        {/* Badges */}
-        <FadeInSection delay={0.6} duration={0.7}>
-          <Stack
-            direction={{ xs: "column", sm: "row" }}
-            spacing={{ xs: 3, sm: 4 }}
-            justifyContent="center"
-            alignItems="center"
-            sx={{ mt: 6 }}
+       {/* Badges */}
+<FadeInSection delay={0.6} duration={0.7}>
+  <Box
+    sx={{
+      mt: 3,
+      display: "flex",
+      justifyContent: "center",
+    }}
+  >
+    <Stack
+      direction="row"
+      spacing={{ xs: 3, md: 8 }}
+      justifyContent="center"
+      alignItems="center"
+    >
+      {BADGES.map(({ icon, label }) => (
+        <Box
+          key={label}
+          sx={{
+            textAlign: "center",
+            minWidth: 120,
+          }}
+        >
+          <Typography sx={{ fontSize: 30, mb: 1 }}>
+            {icon}
+          </Typography>
+
+          <Typography
+            sx={{
+              fontSize: 14,
+              color: "rgba(255,255,255,0.7)",
+              fontWeight: 500,
+            }}
           >
-            {BADGES.map(({ icon, label }) => (
-              <Box key={label} sx={{ textAlign: "center" }}>
-                <Typography sx={{ fontSize: 28, mb: 0.75 }}>{icon}</Typography>
-                <Typography sx={{ fontSize: 13, color: "rgba(255,255,255,0.6)", fontWeight: 500 }}>
-                  {label}
-                </Typography>
-              </Box>
-            ))}
-          </Stack>
-        </FadeInSection>
+            {label}
+          </Typography>
+        </Box>
+      ))}
+    </Stack>
+  </Box>
+</FadeInSection>
       </Box>
     </Box>
   );

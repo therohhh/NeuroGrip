@@ -1,15 +1,28 @@
 import { forwardRef } from "react";
 import {
-  Box, Typography, Grid, Card, CardContent,
+  Box,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
 } from "@mui/material";
-import { FEATURES, HOW_IT_HELPS, HOW_IT_WORKS, TRUST_ITEMS } from "../constants/data";
+import {
+  FEATURES,
+  HOW_IT_HELPS,
+  HOW_IT_WORKS,
+  TRUST_ITEMS,
+} from "../constants/data";
 import FadeInSection from "./FadeInSection";
 
 const SectionLabel = ({ children }) => (
   <Typography
     sx={{
-      fontSize: 12, fontWeight: 600, letterSpacing: 2,
-      textTransform: "uppercase", color: "#185FA5", mb: 1.5,
+      fontSize: 12,
+      fontWeight: 600,
+      letterSpacing: 2,
+      textTransform: "uppercase",
+      color: "#185FA5",
+      mb: 3,
     }}
   >
     {children}
@@ -19,9 +32,11 @@ const SectionLabel = ({ children }) => (
 const Divider = ({ center = false }) => (
   <Box
     sx={{
-      width: 48, height: 4,
+      width: 48,
+      height: 4,
       background: "linear-gradient(90deg, #185FA5, #00C9A7)",
-      borderRadius: 2, my: 2,
+      borderRadius: 2,
+      my: 2,
       mx: center ? "auto" : 0,
     }}
   />
@@ -32,22 +47,44 @@ const AboutSection = forwardRef(function AboutSection(_, ref) {
     <Box
       ref={ref}
       component="section"
-      sx={{ background: "#F8FAFF", py: { xs: 8, md: 12 }, px: "5vw" }}
+      sx={{
+        background: "#F8FAFF",
+        py: { xs: 8, md: 12 },
+        px: "5vw",
+        width: "100%",
+      }}
     >
-      <Box sx={{ maxWidth: 1200, mx: "auto" }}>
-
+     <Box sx={{ maxWidth: "1200px", width: "100%", mx: "auto" }}>
         {/* Header */}
         <FadeInSection delay={0} duration={0.6}>
           <Box sx={{ textAlign: "center", mb: 8 }}>
             <SectionLabel>About</SectionLabel>
-            <Typography variant="h2" sx={{ fontSize: { xs: 28, md: 42 }, color: "#0d1117" }}>
+
+            <Typography
+              variant="h2"
+              sx={{
+                fontSize: { xs: 28, md: 42 },
+                color: "#0d1117",
+              }}
+            >
               What is Neuro Grip?
             </Typography>
+
             <Divider center />
-            <Typography sx={{ fontSize: 17, color: "#4A5568", maxWidth: 640, mx: "auto", lineHeight: 1.7 }}>
-              Neuro Grip is a soft robotic hand glove that uses advanced actuator technology to assist
-              patients suffering from hand paralysis, stroke, or motor disorders — enabling natural
-              movement through intelligent mechanical support.
+
+            <Typography
+              sx={{
+                fontSize: 17,
+                color: "#4A5568",
+                maxWidth: 640,
+                mx: "auto",
+                lineHeight: 1.7,
+              }}
+            >
+              Neuro Grip is a soft robotic hand glove that uses advanced
+              actuator technology to assist patients suffering from hand
+              paralysis, stroke, or motor disorders — enabling natural movement
+              through intelligent mechanical support.
             </Typography>
           </Box>
         </FadeInSection>
@@ -56,14 +93,25 @@ const AboutSection = forwardRef(function AboutSection(_, ref) {
         <FadeInSection delay={0.1} duration={0.7}>
           <Box
             sx={{
-              background: "#fff", borderRadius: 4, p: { xs: 3, md: 5 },
-              mb: 8, border: "1px solid #E8ECEF",
+              background: "#fff",
+              borderRadius: 4,
+              p: { xs: 3, md: 5 },
+              mb: 8,
+              border: "1px solid #E8ECEF",
             }}
           >
-            <Typography variant="h3" sx={{ fontSize: 22, color: "#0d1117", mb: 3.5 }}>
+            <Typography
+              variant="h3"
+              sx={{
+                fontSize: 22,
+                color: "#0d1117",
+                mb: 3.5,
+              }}
+            >
               How It Works
             </Typography>
-            <Grid container spacing={3}>
+
+            <Grid container spacing={3} justifyContent="center">
               {HOW_IT_WORKS.map(({ title, desc }) => (
                 <Grid item xs={12} sm={6} md={3} key={title}>
                   <Box
@@ -76,11 +124,24 @@ const AboutSection = forwardRef(function AboutSection(_, ref) {
                     }}
                   >
                     <Typography
-                      sx={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: 15, color: "#185FA5", mb: 1 }}
+                      sx={{
+                        fontFamily: "'Sora', sans-serif",
+                        fontWeight: 700,
+                        fontSize: 15,
+                        color: "#185FA5",
+                        mb: 1,
+                      }}
                     >
                       {title}
                     </Typography>
-                    <Typography sx={{ fontSize: 14, color: "#4A5568", lineHeight: 1.6 }}>
+
+                    <Typography
+                      sx={{
+                        fontSize: 14,
+                        color: "#4A5568",
+                        lineHeight: 1.6,
+                      }}
+                    >
                       {desc}
                     </Typography>
                   </Box>
@@ -92,28 +153,62 @@ const AboutSection = forwardRef(function AboutSection(_, ref) {
 
         {/* Key Features */}
         <SectionLabel>Key Features</SectionLabel>
-        <Grid container spacing={2.5} sx={{ mb: 8 }}>
+
+        <Grid
+          container
+         spacing={2}
+          justifyContent="center"
+          sx={{ mb: 8 }}
+        >
           {FEATURES.map((f, i) => (
             <Grid item xs={12} sm={6} md={3} key={f.title}>
               <FadeInSection delay={i * 0.12} duration={0.65}>
-                <Card
-                  sx={{
-                    p: 1, height: "100%",
-                    transition: "box-shadow 0.2s, transform 0.2s",
-                    "&:hover": { boxShadow: "0 8px 32px rgba(24,95,165,0.10)", transform: "translateY(-3px)" },
-                  }}
-                >
-                  <CardContent>
-                    <Typography sx={{ fontSize: 36, mb: 2 }}>{f.icon}</Typography>
-                    <Typography
-                      sx={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: 17, color: "#0d1117", mb: 1 }}
-                    >
-                      {f.title}
-                    </Typography>
-                    <Typography sx={{ fontSize: 14, color: "#4A5568", lineHeight: 1.6 }}>
-                      {f.desc}
-                    </Typography>
-                  </CardContent>
+               <Card
+  sx={{
+    height: 240,
+    maxWidth: 270,
+    mx: "auto",
+    borderRadius: 3,
+    boxShadow: "0 2px 10px rgba(0,0,0,0.06)",
+    transition: "all 0.3s ease",
+    "&:hover": {
+      transform: "translateY(-5px)",
+      boxShadow: "0 10px 30px rgba(24,95,165,0.12)",
+    },
+  }}
+>
+              <CardContent
+  sx={{
+    p: 3,
+    textAlign: "center",
+  }}
+>
+  <Typography sx={{ fontSize: 40, mb: 2 }}>
+    {f.icon}
+  </Typography>
+
+  <Typography
+    sx={{
+      fontFamily: "'Sora', sans-serif",
+      fontWeight: 700,
+      fontSize: 16,
+      color: "#0d1117",
+      mb: 1,
+    }}
+  >
+    {f.title}
+  </Typography>
+
+  <Typography
+    sx={{
+      fontSize: 13,
+      color: "#4A5568",
+      lineHeight: 1.6,
+    }}
+  >
+    {f.desc}
+  </Typography>
+</CardContent>
                 </Card>
               </FadeInSection>
             </Grid>
@@ -122,29 +217,73 @@ const AboutSection = forwardRef(function AboutSection(_, ref) {
 
         {/* Patient Journey */}
         <SectionLabel>Patient Journey</SectionLabel>
-        <Typography variant="h3" sx={{ fontSize: 22, color: "#0d1117", mb: 3 }}>
+
+        <Typography
+          variant="h3"
+          sx={{
+            fontSize: 22,
+            color: "#0d1117",
+            mb: 3,
+          }}
+        >
           How Neuro Grip Helps
         </Typography>
-        <Grid container spacing={2.5} sx={{ mb: 8 }}>
+
+        <Grid
+          container
+          spacing={{ xs: 1.5, md: 2 }}
+          justifyContent="center"
+          sx={{ mb: 8 }}
+        >
           {HOW_IT_HELPS.map((p, i) => (
-            <Grid item xs={12} md={4} key={p.phase}>
+           <Grid item xs={12} sm={6} md={4} key={p.phase}>
               <FadeInSection delay={i * 0.12} duration={0.65}>
-                <Box
-                  sx={{
-                    background: p.color, borderRadius: 4, p: 3.5, height: "100%",
-                  }}
-                >
+               <Box
+  sx={{
+    background: p.color,
+    borderRadius: 4,
+    p: 3.5,
+    height: 260,
+    maxWidth: 380,
+    mx: "auto",
+    transition: "all 0.3s ease",
+    "&:hover": {
+      transform: "translateY(-5px)",
+    },
+  }}
+>
                   <Typography
-                    sx={{ fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", color: p.accent, mb: 1.25 }}
+                    sx={{
+                      fontSize: 12,
+                      fontWeight: 700,
+                      letterSpacing: 2,
+                      textTransform: "uppercase",
+                      color: p.accent,
+                      mb: 1.25,
+                    }}
                   >
                     Phase {i + 1} — {p.phase}
                   </Typography>
+
                   <Typography
-                    sx={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: 18, color: "#0d1117", mb: 1.25 }}
+                    sx={{
+                      fontFamily: "'Sora', sans-serif",
+                      fontWeight: 700,
+                      fontSize: 16,
+                      color: "#0d1117",
+                      mb: 1,
+                    }}
                   >
                     {p.label}
                   </Typography>
-                  <Typography sx={{ fontSize: 14, color: "#4A5568", lineHeight: 1.6 }}>
+
+                  <Typography
+                    sx={{
+                      fontSize: 13,
+                      color: "#4A5568",
+                      lineHeight: 1.5,
+                    }}
+                  >
                     {p.desc}
                   </Typography>
                 </Box>
@@ -155,33 +294,66 @@ const AboutSection = forwardRef(function AboutSection(_, ref) {
 
         {/* Why Trust Us */}
         <SectionLabel>Why Trust Us</SectionLabel>
-        <Grid container spacing={2.5}>
+
+        <Grid
+  container
+  spacing={2}
+  justifyContent="center"
+  sx={{ mb: 3 }}
+>
           {TRUST_ITEMS.map(({ icon, title, desc }, i) => (
             <Grid item xs={12} sm={6} md={3} key={title}>
               <FadeInSection delay={i * 0.12} duration={0.65}>
-                <Box
-                  sx={{
-                    background: "#fff", border: "1px solid #E8ECEF",
-                    borderRadius: 4, p: 3, display: "flex", gap: 2, alignItems: "flex-start",
-                  }}
-                >
-                  <Typography sx={{ fontSize: 28 }}>{icon}</Typography>
+              <Box
+  sx={{
+    background: "#fff",
+    border: "1px solid #E8ECEF",
+    borderRadius: 3,
+    p: 2.5,
+    textAlign: "center",
+    height: 220,
+    maxWidth: 270,
+    mx: "auto",
+    boxShadow: "0 2px 10px rgba(0,0,0,0.05)",
+    transition: "all 0.3s ease",
+    "&:hover": {
+      transform: "translateY(-5px)",
+      boxShadow: "0 10px 25px rgba(24,95,165,0.10)",
+    },
+  }}
+>
+                  <Typography sx={{ fontSize: 32, mb: 1.5 }}>
+                    {icon}
+                  </Typography>
+
                   <Box>
                     <Typography
-                      sx={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: 15, color: "#0d1117", mb: 0.75 }}
-                    >
-                      {title}
-                    </Typography>
-                    <Typography sx={{ fontSize: 13, color: "#4A5568", lineHeight: 1.6 }}>
-                      {desc}
-                    </Typography>
+  sx={{
+    fontFamily: "'Sora', sans-serif",
+    fontWeight: 700,
+    fontSize: 15,
+    color: "#0d1117",
+    mb: 1,
+  }}
+>
+  {title}
+</Typography>
+
+<Typography
+  sx={{
+    fontSize: 13,
+    color: "#4A5568",
+    lineHeight: 1.6,
+  }}
+>
+  {desc}
+</Typography>
                   </Box>
                 </Box>
               </FadeInSection>
             </Grid>
           ))}
         </Grid>
-
       </Box>
     </Box>
   );
