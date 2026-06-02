@@ -57,7 +57,7 @@ export default function Navbar({ activeNav, scrollTo, scrolled }) {
               <span style={{ color: "#fff", fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: 16 }}>N</span>
             </Box>
             <Box sx={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: 20, color: "#0d1117" }}>
-              Neuro<span style={{ color: "#185FA5" }}>Grip</span>
+              Neuro<span style={{ color: "#185FA5" }}>Grip.</span>
             </Box>
           </Box>
 
