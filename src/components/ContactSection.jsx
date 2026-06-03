@@ -1,7 +1,5 @@
 import { forwardRef, useState } from "react";
-import {
-  Box, Typography, Grid, TextField, Button, Snackbar, Alert,
-} from "@mui/material";
+import { Box, Typography, TextField, Button, Snackbar, Alert } from "@mui/material";
 import emailjs from "@emailjs/browser";
 import FadeInSection from "./FadeInSection";
 
@@ -9,14 +7,12 @@ const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-const ContactSection = forwardRef(function ContactSection(_, ref) {
+const ContactSection = forwardRef(function ContactSection({ id }, ref) {
   const [form, setForm] = useState({ from_name: "", from_email: "", subject: "", message: "" });
   const [loading, setLoading] = useState(false);
   const [snackbar, setSnackbar] = useState({ open: false, severity: "success", message: "" });
 
-  const handleChange = (e) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
+  const handleChange = (e) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const handleSubmit = () => {
     if (!form.from_name || !form.from_email || !form.message) {
@@ -29,146 +25,131 @@ const ContactSection = forwardRef(function ContactSection(_, ref) {
         setSnackbar({ open: true, severity: "success", message: "Message sent! We'll get back to you soon." });
         setForm({ from_name: "", from_email: "", subject: "", message: "" });
       })
-      .catch(() => {
-        setSnackbar({ open: true, severity: "error", message: "Something went wrong. Please try again." });
-      })
+      .catch(() => setSnackbar({ open: true, severity: "error", message: "Something went wrong. Please try again." }))
       .finally(() => setLoading(false));
   };
 
   return (
-    <Box
-      ref={ref}
-      component="section"
-      sx={{ py: { xs: 8, md: 12 }, px: "5vw" }}
-    >
+    <Box id={id} ref={ref} component="section" sx={{ py: { xs: 4, md: 6 }, px: "5vw" }}>
       <Box sx={{ maxWidth: 1100, mx: "auto" }}>
-        <Grid container spacing={{ xs: 6, md: 8 }} alignItems="flex-start">
 
-          {/* Left info */}
-          <Grid item xs={12} md={5}>
-            <FadeInSection delay={0} duration={0.6} direction="right">
-              <Typography
-                sx={{ fontSize: 12, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", color: "#185FA5", mb: 1.5 }}
-              >
-                Contact
-              </Typography>
-              <Typography variant="h2" sx={{ fontSize: { xs: 28, md: 38 }, color: "#0d1117", mb: 1 }}>
-                Get In Touch
-              </Typography>
-              <Box
-                sx={{
-                  width: 48, height: 4,
-                  background: "linear-gradient(90deg, #185FA5, #00C9A7)",
-                  borderRadius: 2, my: 2, mb: 3,
-                }}
-              />
-              <Typography sx={{ fontSize: 16, color: "#4A5568", lineHeight: 1.7, mb: 4 }}>
+        {/* Header */}
+        <FadeInSection delay={0} duration={0.6}>
+          <Box sx={{ mb: 3 }}>
+            <Typography sx={{ fontSize: 11, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", color: "#185FA5", mb: 1 }}>
+              Contact
+            </Typography>
+            <Typography variant="h2" sx={{ fontSize: { xs: 22, md: 30 }, color: "#0d1117", mb: 1 }}>
+              Get In Touch
+            </Typography>
+            <Box sx={{ width: 40, height: 3, background: "linear-gradient(90deg, #185FA5, #00C9A7)", borderRadius: 2, mt: 1.5 }} />
+          </Box>
+        </FadeInSection>
+
+        {/* Side by side layout */}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+            justifyContent: "space-between",
+            alignItems: "stretch",
+          }}
+        >
+          {/* LEFT — Contact Info */}
+          <Box sx={{ flex: "0 0 auto", width: { xs: "100%", md: "300px" } }}>
+            <FadeInSection delay={0.1} duration={0.6} direction="right">
+              <Typography sx={{ fontSize: 14, color: "#4A5568", lineHeight: 1.6, mb: 3 }}>
                 Whether you're a patient, clinician, investor, or collaborator — we'd love to connect
-                and explore how Neuro Grip can make a difference.
+                and explore how NeuroGrip can make a difference.
               </Typography>
 
               <Box sx={{ display: "flex", flexDirection: "column", gap: 2.5 }}>
-                {/* Email */}
-                <Box sx={{ display: "flex", gap: 1.75, alignItems: "flex-start" }}>
-                  <Box
-                    sx={{
-                      width: 44, height: 44, borderRadius: 3,
-                      background: "#F0F4FF",
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      fontSize: 20, flexShrink: 0,
-                    }}
-                  >
-                    📧
+                {[
+                  { icon: "📧", label: "Email Us", value: "mcneurogrip@gmail.com", sub: null, highlight: true },
+                  { icon: "💬", label: "WhatsApp", value: "+91 XXXXX XXXXX", sub: "Responds within 4hrs, 9am–7pm IST", highlight: false },
+                  { icon: "📍", label: "Location", value: "Andhra Pradesh, India", sub: null, highlight: false },
+                ].map((item) => (
+                  <Box key={item.label} sx={{ display: "flex", gap: 1.5, alignItems: "flex-start" }}>
+                    <Box
+                      sx={{
+                        width: 40, height: 40, borderRadius: 2,
+                        background: "#F0F4FF",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        fontSize: 18, flexShrink: 0,
+                      }}
+                    >
+                      {item.icon}
+                    </Box>
+                    <Box>
+                      <Typography sx={{ fontWeight: 600, fontSize: 14, color: "#0d1117", mb: 0.25 }}>
+                        {item.label}
+                      </Typography>
+                      <Typography sx={{ color: item.highlight ? "#185FA5" : "#4A5568", fontSize: 13 }}>
+                        {item.value}
+                      </Typography>
+                      {item.sub && (
+                        <Typography sx={{ color: "#4A5568", fontSize: 12, mt: 0.25 }}>{item.sub}</Typography>
+                      )}
+                    </Box>
                   </Box>
-                  <Box>
-                    <Typography sx={{ fontWeight: 600, color: "#0d1117", mb: 0.25 }}>Email Us</Typography>
-                    <Typography sx={{ color: "#185FA5", fontSize: 15 }}>mcneurogrip@gmail.com</Typography>
-                  </Box>
-                </Box>
-
-                {/* Location */}
-                <Box sx={{ display: "flex", gap: 1.75, alignItems: "flex-start" }}>
-                  <Box
-                    sx={{
-                      width: 44, height: 44, borderRadius: 3,
-                      background: "#F0F4FF",
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      fontSize: 20, flexShrink: 0,
-                    }}
-                  >
-                    📍
-                  </Box>
-                  <Box>
-                    <Typography sx={{ fontWeight: 600, color: "#0d1117", mb: 0.25 }}>Location</Typography>
-                    <Typography sx={{ color: "#4A5568", fontSize: 15 }}>Andhra Pradesh, India</Typography>
-                  </Box>
-                </Box>
+                ))}
               </Box>
             </FadeInSection>
-          </Grid>
+          </Box>
 
-          {/* Right form */}
-          <Grid item xs={12} md={7}>
-            <FadeInSection delay={0.15} duration={0.7} direction="left">
+          {/* RIGHT — Send a Message */}
+          <Box sx={{ flex: "0 0 auto", width: { xs: "100%", md: "460px" } }}>
+            <FadeInSection delay={0.2} duration={0.7} direction="center">
               <Box
                 sx={{
                   background: "#F8FAFF",
-                  borderRadius: 4,
-                  p: { xs: 3, md: 5 },
+                  borderRadius: 3,
+                  p: { xs: 2.5, md: 3.5 },
                   border: "1px solid #E8ECEF",
+                  height: "100%",
                 }}
               >
-                <Typography
-                  sx={{ fontFamily: "'Sora', sans-serif", fontSize: 20, fontWeight: 700, mb: 3, color: "#0d1117" }}
-                >
+                <Typography sx={{ fontFamily: "'Sora', sans-serif", fontSize: 17, fontWeight: 700, mb: 2.5, color: "#0d1117" }}>
                   Send a Message
                 </Typography>
-
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                  <Grid container spacing={1.5}>
-                    <Grid item xs={12} sm={6}>
-                      <TextField fullWidth label="Name" name="from_name" value={form.from_name} onChange={handleChange} placeholder="Your name" size="small" />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField fullWidth label="Email" name="from_email" value={form.from_email} onChange={handleChange} type="email" placeholder="you@example.com" size="small" />
-                    </Grid>
-                  </Grid>
-                  <TextField fullWidth label="Subject" name="subject" value={form.subject} onChange={handleChange} placeholder="How can we help?" size="small" />
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}>
+                  <Box sx={{ display: "flex", gap: 1.5 }}>
+                    <TextField
+                      fullWidth label="Name" name="from_name"
+                      value={form.from_name} onChange={handleChange}
+                      placeholder="Your name" size="small"
+                    />
+                    <TextField
+                      fullWidth label="Email" name="from_email"
+                      value={form.from_email} onChange={handleChange}
+                      type="email" placeholder="you@example.com" size="small"
+                    />
+                  </Box>
                   <TextField
-                    fullWidth
-                    label="Message"
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    placeholder="Tell us more..."
-                    multiline
-                    rows={4}
-                    size="small"
+                    fullWidth label="Subject" name="subject"
+                    value={form.subject} onChange={handleChange}
+                    placeholder="How can we help?" size="small"
+                  />
+                  <TextField
+                    fullWidth label="Message" name="message"
+                    value={form.message} onChange={handleChange}
+                    placeholder="Tell us more..." multiline rows={3} size="small"
                   />
                   <Button
-                    variant="contained"
-                    fullWidth
-                    onClick={handleSubmit}
-                    disabled={loading}
-                    sx={{
-                      background: "#0d1117",
-                      "&:hover": { background: "#1B3A6B" },
-                      py: 1.75, fontSize: 15,
-                    }}
+                    variant="contained" fullWidth onClick={handleSubmit} disabled={loading}
+                    sx={{ background: "#0d1117", "&:hover": { background: "#1B3A6B" }, py: 1.5, fontSize: 14 }}
                   >
                     {loading ? "Sending..." : "Send Message →"}
                   </Button>
                 </Box>
               </Box>
             </FadeInSection>
-          </Grid>
-
-        </Grid>
+          </Box>
+        </Box>
       </Box>
 
       <Snackbar
-        open={snackbar.open}
-        autoHideDuration={4000}
+        open={snackbar.open} autoHideDuration={4000}
         onClose={() => setSnackbar((s) => ({ ...s, open: false }))}
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       >

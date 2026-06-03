@@ -2,6 +2,7 @@ import { forwardRef } from "react";
 import { Box, Typography, Button, Chip, Stack } from "@mui/material";
 import FadeInSection from "./FadeInSection";
 import heroImg from "../assets/hero.jpg";
+
 const TAGS = [
   { label: "🤖 Soft Robotics" },
   { label: "🏥 Medical Grade" },
@@ -9,16 +10,17 @@ const TAGS = [
   { label: "🔬 Research Backed" },
 ];
 
-const HeroSection = forwardRef(function HeroSection({ scrollTo }, ref) {
+const HeroSection = forwardRef(function HeroSection({ id, scrollTo }, ref) {
   return (
     <Box
+      id={id}
       ref={ref}
       component="section"
       sx={{
         pt: { xs: "100px", md: "120px" },
         pb: { xs: 6, md: 10 },
         px: "5vw",
-        maxWidth: 1200,
+        maxWidth: 2000,
         mx: "auto",
       }}
     >
@@ -53,12 +55,12 @@ const HeroSection = forwardRef(function HeroSection({ scrollTo }, ref) {
             <Typography
               variant="h1"
               sx={{
-                fontSize: { xs: 36, sm: 48, md: "clamp(36px, 5.5vw, 64px)" },
+                fontSize: { xs: 34, sm: 44, md: "clamp(20px, 5vw, 40px)" },
                 lineHeight: 1.1, color: "#0d1117", mb: 2.5,
               }}
             >
-              Restoring Grip.<br />
-              <span style={{ color: "#185FA5" }}>Restoring Life.</span>
+              We are not building a glove.<br />
+              <span style={{ color: "#185FA5" }}>We are restoring independence.</span>
             </Typography>
           </FadeInSection>
 
@@ -70,8 +72,8 @@ const HeroSection = forwardRef(function HeroSection({ scrollTo }, ref) {
                 mx: { xs: "auto", md: 0 },
               }}
             >
-              Neuro Grip is a soft robotic hand glove designed to assist and rehabilitate
-              patients with limited hand mobility — giving them back the independence they deserve.
+              The glove senses your hand trying to move, then gently helps it complete the movement —
+              training your brain to recover. One device. No recurring clinic costs.
             </Typography>
           </FadeInSection>
 
@@ -97,22 +99,46 @@ const HeroSection = forwardRef(function HeroSection({ scrollTo }, ref) {
             <Stack direction={{ xs: "column", sm: "row" }} spacing={2} justifyContent={{ xs: "center", md: "flex-start" }}>
               <Button
                 variant="contained"
-                onClick={() => scrollTo("About")}
-                sx={{ background: "#0d1117", "&:hover": { background: "#1B3A6B" }, px: 3.5, py: 1.5 }}
+                onClick={() => scrollTo("Pre-order")}
+                sx={{
+                  background: "#0e0f0e",
+                  color: "#fff",
+                  fontWeight: 700,
+                  "&:hover": { background: "#00A88C" },
+                  px: 3.5, py: 1.5,
+                  boxShadow: "0 4px 16px rgba(0,201,167,0.35)",
+                }}
               >
-                Learn More
+                Apply for Early Access
               </Button>
               <Button
                 variant="outlined"
-                onClick={() => scrollTo("Contact")}
+                onClick={() => scrollTo("About")}
                 sx={{
                   color: "#0d1117", borderColor: "#0d1117", px: 3.5, py: 1.5,
                   "&:hover": { background: "#0d1117", color: "#fff" },
                 }}
               >
-                Get in Touch
+                Learn More
               </Button>
             </Stack>
+
+            {/* Founder trust signal */}
+            <Box sx={{ mt: 3, display: "flex", alignItems: "center", gap: 1.25, justifyContent: { xs: "center", md: "flex-start" } }}>
+              <Box
+                sx={{
+                  width: 32, height: 32, borderRadius: "50%",
+                  background: "linear-gradient(135deg, #185FA5, #00C9A7)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  flexShrink: 0,
+                }}
+              >
+                <Typography sx={{ color: "#fff", fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: 13 }}>M</Typography>
+              </Box>
+              <Typography sx={{ fontSize: 13, color: "#4A5568" }}>
+                Built by <strong style={{ color: "#0d1117" }}>Mohitha</strong>, Electronics Engineer, Tirupati
+              </Typography>
+            </Box>
           </FadeInSection>
         </Box>
 
@@ -122,7 +148,7 @@ const HeroSection = forwardRef(function HeroSection({ scrollTo }, ref) {
             sx={{
               flex: "0 0 auto",
               width: { xs: "100%", md: 420 },
-              minHeight: { xs: 360, md: 420 },
+              height: { xs: 300, sm: 360, md: 420 },
               position: "relative",
               mt: { xs: 4, md: 0 },
             }}
@@ -140,14 +166,14 @@ const HeroSection = forwardRef(function HeroSection({ scrollTo }, ref) {
                 <Box
                   component="img"
                   src={heroImg}
-                  alt="Neuro Grip soft robotic rehabilitation glove"
+                  alt="NeuroGrip soft robotic rehabilitation glove"
                   loading="lazy"
                   sx={{
                     position: "absolute",
                     inset: 0,
                     width: "100%",
                     height: "100%",
-                    objectFit: { xs: "contain", md: "cover" },
+                    objectFit: "cover",
                     objectPosition: "center",
                   }}
                 />
@@ -169,7 +195,6 @@ const HeroSection = forwardRef(function HeroSection({ scrollTo }, ref) {
                     <Box sx={{ position: "absolute", width: 200, height: 200, borderRadius: "50%", background: "rgba(24,95,165,0.10)", animation: "pulse 3s ease-in-out infinite 0.5s" }} />
                   </>
                 )}
-
               </Box>
             </Box>
           </Box>

@@ -1,18 +1,23 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
+import TrustTicker from "./components/TrustTicker";
+import ProblemSection from "./components/ProblemSection";
 import AboutSection from "./components/AboutSection";
+import HowItWorksPlain from "./components/HowItWorksPlain";
+import EcosystemSection from "./components/EcosystemSection";
 import CareerSection from "./components/CareerSection";
 import PreOrderSection from "./components/PreOrderSection";
+import StorySection from "./components/StorySection";
 import TeamSection from "./components/TeamSection";
 import ContactSection from "./components/ContactSection";
+import FAQSection from "./components/FAQSection";
 import Footer from "./components/Footer";
 
 export default function App() {
   const [activeNav, setActiveNav] = useState("Home");
   const [scrolled, setScrolled] = useState(false);
-  const sectionRefs = useRef({});
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -22,12 +27,8 @@ export default function App() {
 
   const scrollTo = (section) => {
     setActiveNav(section);
-    const el = sectionRefs.current[section];
+    const el = document.getElementById(section);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
-  const ref = (name) => (el) => {
-    sectionRefs.current[name] = el;
   };
 
   return (
@@ -40,7 +41,6 @@ export default function App() {
         overflowX: "hidden",
       }}
     >
-      {/* Global keyframe for hero pulse animation */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Sora:wght@600;700;800&display=swap');
         @keyframes pulse {
@@ -48,17 +48,50 @@ export default function App() {
           50% { transform: scale(1.08); opacity: 0.7; }
         }
         * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+        section { scroll-margin-top: 92px; }
       `}</style>
 
+      {/* 1. Navbar */}
       <Navbar activeNav={activeNav} scrollTo={scrollTo} scrolled={scrolled} />
 
-      <HeroSection ref={ref("Home")} scrollTo={scrollTo} />
-      <AboutSection ref={ref("About")} />
-      <CareerSection ref={ref("Career")} scrollTo={scrollTo} />
-      <PreOrderSection ref={ref("Pre-order")} scrollTo={scrollTo} />
+      {/* 2. Hero */}
+      <HeroSection id="Home" scrollTo={scrollTo} />
+
+      {/* 3. Trust Ticker */}
+      <TrustTicker />
+
+      {/* 4. Problem */}
+      <ProblemSection />
+
+      {/* 5. About (KEEP) */}
+      <AboutSection id="About" />
+
+      {/* 6. How It Works – Plain Language */}
+      <HowItWorksPlain />
+
+      {/* 7. Ecosystem Preview */}
+      <EcosystemSection id="The Ecosystem" />
+
+      {/* 8. Career (KEEP) */}
+      <CareerSection id="Career" scrollTo={scrollTo} />
+
+      {/* 9. Pre-order / Early Access */}
+      <PreOrderSection id="Pre-order" scrollTo={scrollTo} />
+
+      {/* 10. Our Story */}
+      <StorySection id="Our Story" />
+
+      {/* 11. Team (KEEP) */}
       <TeamSection />
-      <ContactSection ref={ref("Contact")} />
+
+      {/* 12. Contact (KEEP + WhatsApp) */}
+      <ContactSection id="Contact" />
+
+      {/* 12. FAQ */}
+      <FAQSection id="FAQ" />
+
+      {/* 13. Footer */}
       <Footer scrollTo={scrollTo} />
     </Box>
   );

@@ -63,7 +63,7 @@ export default function Navbar({ activeNav, scrollTo, scrolled }) {
 
           {/* Desktop Nav */}
           {!isMobile && (
-            <Box sx={{ display: "flex", gap: 3 }}>
+            <Box sx={{ display: "flex", gap: 2.5 }}>
               {NAV_LINKS.map((l) => (
                 <Button
                   key={l}
@@ -72,7 +72,7 @@ export default function Navbar({ activeNav, scrollTo, scrolled }) {
                   sx={{
                     color: activeNav === l ? "#185FA5" : "#0d1117",
                     fontWeight: 500,
-                    fontSize: 15,
+                    fontSize: 14,
                     borderBottom: activeNav === l ? "2px solid #185FA5" : "2px solid transparent",
                     borderRadius: 0,
                     px: 0.5,
@@ -92,9 +92,18 @@ export default function Navbar({ activeNav, scrollTo, scrolled }) {
               <Button
                 variant="contained"
                 onClick={() => handleNav("Pre-order")}
-                sx={{ background: "#0d1117", "&:hover": { background: "#1B3A6B" }, px: "22px", py: "10px", fontSize: 14 }}
+                sx={{
+                  background: "#0c0c0c",
+                  color: "#fff",
+                  fontWeight: 700,
+                  fontSize: 14,
+                  px: "20px",
+                  py: "10px",
+                  "&:hover": { background: "#00A88C" },
+                  boxShadow: "0 2px 12px rgba(0,201,167,0.35)",
+                }}
               >
-                Pre-order
+                Apply for Early Access
               </Button>
             )}
             {isMobile && (
@@ -141,6 +150,16 @@ export default function Navbar({ activeNav, scrollTo, scrolled }) {
               </ListItemButton>
             </ListItem>
           ))}
+          <ListItem disablePadding sx={{ mt: 2, px: 3 }}>
+            <Button
+              variant="contained"
+              fullWidth
+              onClick={() => handleNav("Pre-order")}
+              sx={{ background: "#00C9A7", color: "#fff", "&:hover": { background: "#00A88C" }, py: 1.25 }}
+            >
+              Apply for Early Access
+            </Button>
+          </ListItem>
         </List>
       </Drawer>
     </>

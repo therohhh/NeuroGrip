@@ -42,9 +42,10 @@ const Divider = ({ center = false }) => (
   />
 );
 
-const AboutSection = forwardRef(function AboutSection(_, ref) {
+const AboutSection = forwardRef(function AboutSection({ id }, ref) {
   return (
     <Box
+      id={id}
       ref={ref}
       component="section"
       sx={{
@@ -215,82 +216,7 @@ const AboutSection = forwardRef(function AboutSection(_, ref) {
           ))}
         </Grid>
 
-        {/* Patient Journey */}
-        <SectionLabel>Patient Journey</SectionLabel>
-
-        <Typography
-          variant="h3"
-          sx={{
-            fontSize: 22,
-            color: "#0d1117",
-            mb: 3,
-          }}
-        >
-          How Neuro Grip Helps
-        </Typography>
-
-        <Grid
-          container
-          spacing={{ xs: 1.5, md: 2 }}
-          justifyContent="center"
-          sx={{ mb: 8 }}
-        >
-          {HOW_IT_HELPS.map((p, i) => (
-           <Grid item xs={12} sm={6} md={4} key={p.phase}>
-              <FadeInSection delay={i * 0.12} duration={0.65}>
-               <Box
-  sx={{
-    background: p.color,
-    borderRadius: 4,
-    p: 3.5,
-    height: 260,
-    maxWidth: 380,
-    mx: "auto",
-    transition: "all 0.3s ease",
-    "&:hover": {
-      transform: "translateY(-5px)",
-    },
-  }}
->
-                  <Typography
-                    sx={{
-                      fontSize: 12,
-                      fontWeight: 700,
-                      letterSpacing: 2,
-                      textTransform: "uppercase",
-                      color: p.accent,
-                      mb: 1.25,
-                    }}
-                  >
-                    Phase {i + 1} — {p.phase}
-                  </Typography>
-
-                  <Typography
-                    sx={{
-                      fontFamily: "'Sora', sans-serif",
-                      fontWeight: 700,
-                      fontSize: 16,
-                      color: "#0d1117",
-                      mb: 1,
-                    }}
-                  >
-                    {p.label}
-                  </Typography>
-
-                  <Typography
-                    sx={{
-                      fontSize: 13,
-                      color: "#4A5568",
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    {p.desc}
-                  </Typography>
-                </Box>
-              </FadeInSection>
-            </Grid>
-          ))}
-        </Grid>
+      
 
         {/* Why Trust Us */}
         <SectionLabel>Why Trust Us</SectionLabel>
