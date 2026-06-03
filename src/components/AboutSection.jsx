@@ -90,67 +90,7 @@ const AboutSection = forwardRef(function AboutSection({ id }, ref) {
           </Box>
         </FadeInSection>
 
-        {/* How It Works */}
-        <FadeInSection delay={0.1} duration={0.7}>
-          <Box
-            sx={{
-              background: "#fff",
-              borderRadius: 4,
-              p: { xs: 3, md: 5 },
-              mb: 8,
-              border: "1px solid #E8ECEF",
-            }}
-          >
-            <Typography
-              variant="h3"
-              sx={{
-                fontSize: 22,
-                color: "#0d1117",
-                mb: 3.5,
-              }}
-            >
-              How It Works
-            </Typography>
-
-            <Grid container spacing={3} justifyContent="center">
-              {HOW_IT_WORKS.map(({ title, desc }) => (
-                <Grid item xs={12} sm={6} md={3} key={title}>
-                  <Box
-                    sx={{
-                      p: 2.5,
-                      borderLeft: "3px solid #185FA5",
-                      background: "#F8FAFF",
-                      borderRadius: "0 12px 12px 0",
-                      height: "100%",
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        fontFamily: "'Sora', sans-serif",
-                        fontWeight: 700,
-                        fontSize: 15,
-                        color: "#185FA5",
-                        mb: 1,
-                      }}
-                    >
-                      {title}
-                    </Typography>
-
-                    <Typography
-                      sx={{
-                        fontSize: 14,
-                        color: "#4A5568",
-                        lineHeight: 1.6,
-                      }}
-                    >
-                      {desc}
-                    </Typography>
-                  </Box>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
-        </FadeInSection>
+       
 
         {/* Key Features */}
         <SectionLabel>Key Features</SectionLabel>
