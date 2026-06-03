@@ -1,5 +1,5 @@
 export const NAV_LINKS = ["Home", "About", "The Ecosystem", "Our Story", "Career", "Contact"];
-
+import founderImg from "../assets/founder.jpeg";
 export const FEATURES = [
   { icon: "🧠", title: "Neuro-Adaptive", desc: "Responds intelligently to nerve signals, adapting grip strength in real time for each patient." },
   { icon: "🪶", title: "Ultra Lightweight", desc: "Engineered with advanced soft-robotics materials — barely felt on the hand, yet incredibly functional." },
@@ -15,12 +15,14 @@ export const HOW_IT_HELPS = [
 
 export const TEAM = [
   {
-    name: "Mohitha",
-    role: "Founder & Electronics Engineer",
-    quote: "Built to bridge the gap between hospital technology and accessible home care.",
+    name: "MOHITHA REDDY CH",
     initials: "M",
+    role: "Founder & CEO",
+    photo: founderImg, 
     color: "#185FA5",
+    quote: "We built this because the world needed something better.",
   },
+  
 ];
 
 export const HOW_IT_WORKS = [
