@@ -66,9 +66,9 @@ const ContactSection = forwardRef(function ContactSection({ id }, ref) {
 
               <Box sx={{ display: "flex", flexDirection: "column", gap: 2.5 }}>
                 {[
-                  { icon: <FaEnvelope style={{ color: "#E74C3C" }} />, label: "Email Us", value: "mcneurogrip@gmail.com", sub: null, highlight: true },
-                  { icon: <FaComments style={{ color: "#27AE60" }} />, label: "WhatsApp", value: "+91 XXXXX XXXXX", sub: "Responds within 4hrs, 9am–7pm IST", highlight: false },
-                  { icon: <FaMapMarkerAlt style={{ color: "#D85A30" }} />, label: "Location", value: "Andhra Pradesh, India", sub: null, highlight: false },
+                  { icon: <FaEnvelope style={{ color: "#130d0c" }} />, label: "Email Us", value: "mcneurogrip@gmail.com", sub: null, highlight: true },
+                  { icon: <FaComments style={{ color: "#040706" }} />, label: "WhatsApp", value: "+91 XXXXX XXXXX", sub: "Responds within 4hrs, 9am–7pm IST", highlight: false },
+                  { icon: <FaMapMarkerAlt style={{ color: "#171413" }} />, label: "Location", value: "Andhra Pradesh, India", sub: null, highlight: false },
                 ].map((item) => (
                   <Box key={item.label} sx={{ display: "flex", gap: 1.5, alignItems: "flex-start" }}>
                     <Box

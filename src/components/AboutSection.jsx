@@ -8,8 +8,6 @@ import {
 } from "@mui/material";
 import {
   FEATURES,
-  HOW_IT_HELPS,
-  HOW_IT_WORKS,
   TRUST_ITEMS,
   ICON_COMPONENTS,
 } from "../constants/data";

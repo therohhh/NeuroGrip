@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { Box, Typography, Grid } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { ECOSYSTEM_CARDS, ICON_COMPONENTS } from "../constants/data";
 import FadeInSection from "./FadeInSection";
 
