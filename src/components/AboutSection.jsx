@@ -11,6 +11,7 @@ import {
   HOW_IT_HELPS,
   HOW_IT_WORKS,
   TRUST_ITEMS,
+  ICON_COMPONENTS,
 } from "../constants/data";
 import FadeInSection from "./FadeInSection";
 
@@ -125,7 +126,7 @@ const AboutSection = forwardRef(function AboutSection({ id }, ref) {
   }}
 >
   <Typography sx={{ fontSize: 40, mb: 2 }}>
-    {f.icon}
+    {ICON_COMPONENTS[f.icon] ? ICON_COMPONENTS[f.icon]({ color: f.color }) : f.icon}
   </Typography>
 
   <Typography
@@ -167,7 +168,7 @@ const AboutSection = forwardRef(function AboutSection({ id }, ref) {
   justifyContent="center"
   sx={{ mb: 3 }}
 >
-          {TRUST_ITEMS.map(({ icon, title, desc }, i) => (
+          {TRUST_ITEMS.map(({ icon, color, title, desc }, i) => (
             <Grid item xs={12} sm={6} md={3} key={title}>
               <FadeInSection delay={i * 0.12} duration={0.65}>
               <Box
@@ -189,7 +190,7 @@ const AboutSection = forwardRef(function AboutSection({ id }, ref) {
   }}
 >
                   <Typography sx={{ fontSize: 32, mb: 1.5 }}>
-                    {icon}
+                    {ICON_COMPONENTS[icon] ? ICON_COMPONENTS[icon]({ color: color }) : icon}
                   </Typography>
 
                   <Box>

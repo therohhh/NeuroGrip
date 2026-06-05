@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { Box, Typography, Grid } from "@mui/material";
-import { ECOSYSTEM_CARDS } from "../constants/data";
+import { ECOSYSTEM_CARDS, ICON_COMPONENTS } from "../constants/data";
 import FadeInSection from "./FadeInSection";
 
 const EcosystemSection = forwardRef(function EcosystemSection({ id }, ref) {
@@ -78,7 +78,7 @@ const EcosystemSection = forwardRef(function EcosystemSection({ id }, ref) {
                   </Box>
                 )}
 
-                <Typography sx={{ fontSize: 32, mb: 2 }}>{card.icon}</Typography>
+                <Typography sx={{ fontSize: 32, mb: 2 }}>{ICON_COMPONENTS[card.icon] ? ICON_COMPONENTS[card.icon]({ color: card.color }) : card.icon}</Typography>
 
                 <Typography
                   sx={{

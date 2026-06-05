@@ -1,10 +1,25 @@
+import { FaBrain, FaFeather, FaSyncAlt, FaChartBar, FaHospital, FaGraduationCap, FaFlask, FaHandPaper, FaMobileAlt } from "react-icons/fa";
+
 export const NAV_LINKS = ["Home", "About", "The Ecosystem", "Our Story", "Career", "Contact"];
 import founderImg from "../assets/founder.jpeg";
+
+export const ICON_COMPONENTS = {
+  FaBrain,
+  FaFeather,
+  FaSyncAlt,
+  FaChartBar,
+  FaHospital,
+  FaGraduationCap,
+  FaFlask,
+  FaHandPaper,
+  FaMobileAlt,
+};
+
 export const FEATURES = [
-  { icon: "🧠", title: "Neuro-Adaptive", desc: "Responds intelligently to nerve signals, adapting grip strength in real time for each patient." },
-  { icon: "🪶", title: "Ultra Lightweight", desc: "Engineered with advanced soft-robotics materials — barely felt on the hand, yet incredibly functional." },
-  { icon: "🔄", title: "Closed Loop", desc: "Continuous feedback control with adjustable tension and resistance tailored to each recovery stage." },
-  { icon: "📊", title: "Data Driven", desc: "Session logs and progress tracking — shareable with your care team and neurologist." },
+  { icon: "FaBrain", color: "#185FA5", title: "Neuro-Adaptive", desc: "Responds intelligently to nerve signals, adapting grip strength in real time for each patient." },
+  { icon: "FaFeather", color: "#00C9A7", title: "Ultra Lightweight", desc: "Engineered with advanced soft-robotics materials — barely felt on the hand, yet incredibly functional." },
+  { icon: "FaSyncAlt", color: "#D85A30", title: "Closed Loop", desc: "Continuous feedback control with adjustable tension and resistance tailored to each recovery stage." },
+  { icon: "FaChartBar", color: "#0F6E56", title: "Data Driven", desc: "Session logs and progress tracking — shareable with your care team and neurologist." },
 ];
 
 export const HOW_IT_HELPS = [
@@ -61,10 +76,10 @@ export const HOW_IT_WORKS_PLAIN = [
 ];
 
 export const TRUST_ITEMS = [
-  { icon: "🏥", title: "Medical Grade", desc: "Clinically validated approach with strict biocompatibility standards." },
-  { icon: "🎓", title: "AICTE Licensed", desc: "Officially recognized and licensed by the All India Council for Technical Education." },
-  { icon: "🔬", title: "Research Backed", desc: "Every design decision is backed by peer-reviewed medical research." },
-  { icon: "🇮🇳", title: "Made in India", desc: "Designed and built in Tirupati, Andhra Pradesh." },
+  { icon: "FaHospital", color: "#E74C3C", title: "Medical Grade", desc: "Clinically validated approach with strict biocompatibility standards." },
+  { icon: "FaGraduationCap", color: "#9B59B6", title: "AICTE Licensed", desc: "Officially recognized and licensed by the All India Council for Technical Education." },
+  { icon: "FaFlask", color: "#3498DB", title: "Research Backed", desc: "Every design decision is backed by peer-reviewed medical research." },
+  { icon: "🇮🇳", color: "#D85A30", title: "Made in India", desc: "Designed and built in Tirupati, Andhra Pradesh." },
 ];
 
 export const TRUST_BADGES = [
@@ -78,21 +93,24 @@ export const TRUST_BADGES = [
 
 export const ECOSYSTEM_CARDS = [
   {
-    icon: "🧤",
+    icon: "FaHandPaper",
+    color: "#1ABC9C",
     title: "Under 500g. Wears like a glove.",
     desc: "Soft pneumatic design. Single-handed donning. Wrist-stabilising.",
     cta: "See hardware specs →",
     badge: null,
   },
   {
-    icon: "📱",
+    icon: "FaMobileAlt",
+    color: "#00C9A7",
     title: "Therapy that feels like a game.",
     desc: "Gamified daily sessions. Streak system. Recovery tracking.",
     cta: "Learn more →",
     badge: "In Development",
   },
   {
-    icon: "📊",
+    icon: "FaChartBar",
+    color: "#0F6E56",
     title: "Proof your brain is healing.",
     desc: "Joint angles, grip strength, session logs. Shareable with neurologist.",
     cta: "See the data →",

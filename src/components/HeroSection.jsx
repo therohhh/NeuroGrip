@@ -1,13 +1,14 @@
 import { forwardRef } from "react";
 import { Box, Typography, Button, Chip, Stack } from "@mui/material";
+import { FaRobot, FaHospital, FaBolt, FaFlask } from "react-icons/fa";
 import FadeInSection from "./FadeInSection";
 import heroImg from "../assets/hero.jpg";
 
 const TAGS = [
-  { label: "🤖 Soft Robotics" },
-  { label: "🏥 Medical Grade" },
-  { label: "⚡ Neuro-Adaptive" },
-  { label: "🔬 Research Backed" },
+  { label: <><FaRobot style={{ color: "#185FA5", marginRight: "6px" }} /> Soft Robotics</> },
+  { label: <><FaHospital style={{ color: "#E74C3C", marginRight: "6px" }} /> Medical Grade</> },
+  { label: <><FaBolt style={{ color: "#F39C12", marginRight: "6px" }} /> Neuro-Adaptive</> },
+  { label: <><FaFlask style={{ color: "#3498DB", marginRight: "6px" }} /> Research Backed</> },
 ];
 
 const HeroSection = forwardRef(function HeroSection({ id, scrollTo }, ref) {

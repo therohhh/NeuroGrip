@@ -1,11 +1,12 @@
 import { forwardRef } from "react";
 import { Box, Typography, Button, Stack } from "@mui/material";
+import { FaFlask, FaClipboardList, FaHospital } from "react-icons/fa";
 import FadeInSection from "./FadeInSection";
 
 const BADGES = [
-  { icon: "🔬", label: "In Development" },
-  { icon: "📋", label: "AICTE Licensed" },
-  { icon: "🏥", label: "Medical Grade" },
+  { icon: <FaFlask style={{ color: "#3498DB" }} />, label: "In Development" },
+  { icon: <FaClipboardList style={{ color: "#9B59B6" }} />, label: "AICTE Licensed" },
+  { icon: <FaHospital style={{ color: "#E74C3C" }} />, label: "Medical Grade" },
 ];
 
 const PreOrderSection = forwardRef(function PreOrderSection({ id, scrollTo }, ref) {
