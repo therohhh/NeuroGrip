@@ -100,6 +100,8 @@ export const ECOSYSTEM_CARDS = [
     cta: "See hardware specs →",
     badge: null,
   },
+  
+
   {
     icon: "FaMobileAlt",
     color: "#00C9A7",

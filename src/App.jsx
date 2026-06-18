@@ -15,6 +15,7 @@ import ContactSection from "./components/ContactSection";
 import FAQSection from "./components/FAQSection";
 import Footer from "./components/Footer";
 
+
 export default function App() {
   const [activeNav, setActiveNav] = useState("Home");
   const [scrolled, setScrolled] = useState(false);
