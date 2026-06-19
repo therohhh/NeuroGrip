@@ -29,7 +29,13 @@ export default function App() {
   const scrollTo = (section) => {
     setActiveNav(section);
     const el = document.getElementById(section);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (!el) return;
+    const top =
+      el.getBoundingClientRect().top +
+      window.pageYOffset -
+      68 - // navbar height
+      16;  // breathing room
+    window.scrollTo({ top, behavior: "smooth" });
   };
 
   return (
@@ -49,8 +55,7 @@ export default function App() {
           50% { transform: scale(1.08); opacity: 0.7; }
         }
         * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; scroll-padding-top: 92px; }
-        section { scroll-margin-top: 92px; }
+        html { scroll-behavior: auto; }
       `}</style>
 
       {/* 1. Navbar */}
@@ -88,6 +93,7 @@ export default function App() {
 
       {/* 12. Contact (KEEP + WhatsApp) */}
       <ContactSection id="Contact" />
+
 
       {/* 12. FAQ */}
       <FAQSection id="FAQ" />
